@@ -23,6 +23,10 @@ Adresse de la page `base.html` dans le navigateur :
 
 ## doc
 
+- [Document.querySelector() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+- [document.querySelectorAll() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
+- [HTMLElement.dataset - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
+- [Element.classList - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 - [EventTarget.addEventListener() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 - [Event reference | MDN](https://developer.mozilla.org/en-US/docs/Web/Events)
 - [Event - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Event)

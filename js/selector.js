@@ -6,6 +6,8 @@ var html = myDiv.innerHTML;
 
 // lecture d'attributs de l'élément
 var id = myDiv.id;
+var className = myDiv.className;
+var classList = myDiv.classList;
 var name = myDiv.dataset.name;
 
 // séléection des éléments de type li contenus dans l'élément dont l'id est my-ul
