@@ -34,6 +34,7 @@ Adresse de la page `base.html` dans le navigateur :
 - [Event - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 - [Node - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node)
 - [Document.createElement() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+- [ChildNode.remove() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
 - [HTMLElement.style - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
 
 ### js ES6
