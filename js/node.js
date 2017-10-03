@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
   removeBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
-    var myContainer = document.querySelector('#my-container');
     var img = document.querySelector('#my-img');
 
     if (img) {
