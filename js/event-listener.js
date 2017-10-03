@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     console.log(event.target.id);
   });
 
-  var myContainerDiv = document.querySelector('#my-container-div');
+  var myContainer = document.querySelector('#my-container');
 
-  myContainerDiv.addEventListener('click', function(event) {
-    console.log('click détecté sur myContainerDiv');
+  myContainer.addEventListener('click', function(event) {
+    console.log('click détecté sur myContainer');
   });
 
   // sélection de tous les éléments avec la classe my-radio
