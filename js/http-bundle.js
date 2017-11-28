@@ -184,7 +184,7 @@ module.exports = function xhrAdapter(config) {
 };
 
 }).call(this,require('_process'))
-},{"../core/createError":9,"./../core/settle":12,"./../helpers/btoa":16,"./../helpers/buildURL":17,"./../helpers/cookies":19,"./../helpers/isURLSameOrigin":21,"./../helpers/parseHeaders":23,"./../utils":25,"_process":29}],3:[function(require,module,exports){
+},{"../core/createError":9,"./../core/settle":12,"./../helpers/btoa":16,"./../helpers/buildURL":17,"./../helpers/cookies":19,"./../helpers/isURLSameOrigin":21,"./../helpers/parseHeaders":23,"./../utils":25,"_process":30}],3:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -737,7 +737,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 }).call(this,require('_process'))
-},{"./adapters/http":2,"./adapters/xhr":2,"./helpers/normalizeHeaderName":22,"./utils":25,"_process":29}],15:[function(require,module,exports){
+},{"./adapters/http":2,"./adapters/xhr":2,"./helpers/normalizeHeaderName":22,"./utils":25,"_process":30}],15:[function(require,module,exports){
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -1428,56 +1428,54 @@ function isSlowBuffer (obj) {
 },{}],27:[function(require,module,exports){
 var axios = require('axios');
 
-var element = null;
-
-var setElement = function(e) {
-  element = e;
-};
-
-var search = function(text, s = null, o = 'asc') {
-  axios.get('https://api.github.com/search/repositories', {
-      params: {
-        q: text,
-        sort: s,
-        order: o
-      }
-    })
-    .then(function (response) {
-      element.innerHTML = '';
-
-      response.data.items.forEach(function(item, index, list) {
-        element.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.html_url}</td>
-          <td>${item.clone_url}</td>
-        </tr>
-        `;
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-module.exports = {
-  setElement: setElement,
-  search: search
+exports.search = function(text, s = null, o = 'asc') {
+  return axios.get('https://api.github.com/search/repositories', {
+    params: {
+      q: text,
+      sort: s,
+      order: o
+    }
+  });
 };
 
 },{"axios":1}],28:[function(require,module,exports){
-var githubApi = require('./github-api.js');
+var element = null;
 
-// githubApi.setSearchCallback(function(item, index, list) {
-//   //
-// });
+exports.setElement = function(element) {
+  this.element = element;
+};
+
+exports.displayData = function(data) {
+  var html = '';
+
+  data.items.forEach(function(item, index, list) {
+    html += `
+    <tr>
+      <td>${item.name}</td>
+      <td>${item.html_url}</td>
+      <td>${item.clone_url}</td>
+    </tr>
+    `;
+  });
+
+  this.element.innerHTML = html;
+};
+
+},{}],29:[function(require,module,exports){
+var githubApi = require('./github-api.js');
+var githubDataWidget = require('./github-data-widget.js');
 
 var element = document.querySelector('#result');
 
-githubApi.setElement(element);
-githubApi.search('airbnb language:javascript', 'stars', 'desc');
+githubDataWidget.setElement(element);
 
-},{"./github-api.js":27}],29:[function(require,module,exports){
+githubApi.search('airbnb language:javascript', 'stars', 'desc').then(function(response) {
+  githubDataWidget.displayData(response.data);
+}).catch(function(error) {
+  console.log(error);
+});
+
+},{"./github-api.js":27,"./github-data-widget.js":28}],30:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -1663,4 +1661,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[28]);
+},{}]},{},[29]);
